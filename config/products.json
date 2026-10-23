@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "products": [
+    {
+      "id": "bultex-energizing",
+      "group_id": "bultex-energizing",
+      "name": "Bultex Energizing",
+      "brand": "Bultex",
+      "seller": "Bultex.fr",
+      "category": "Matelas",
+      "currency": "EUR",
+      "url": "https://bultex.fr/matelas-energizing?variant=EB1600216020000",
+      "adapter": "bultex_hyva",
+      "enabled": true,
+      "expected_variants": [
+        "80x190",
+        "80x200",
+        "90x190",
+        "90x200",
+        "120x190",
+        "140x190",
+        "140x200",
+        "160x200",
+        "180x200",
+        "200x200"
+      ],
+      "preferred_variant": "160x200",
+      "alert_thresholds": {
+        "160x200": 800
+      }
+    }
+  ]
+}
