@@ -100,6 +100,106 @@
       "currency": "EUR",
       "source": "https://bultex.fr/matelas-energizing?variant=EB1600216020000",
       "available": true
+    },
+    {
+      "observed_at": "2026-10-23T23:12:16.383559+00:00",
+      "product_id": "bultex-energizing",
+      "variant_id": "80x190",
+      "price_cents": 48660,
+      "reference_cents": 81100,
+      "currency": "EUR",
+      "source": "https://bultex.fr/matelas-energizing?variant=EB1600216020000",
+      "available": true
+    },
+    {
+      "observed_at": "2026-10-23T23:12:16.383559+00:00",
+      "product_id": "bultex-energizing",
+      "variant_id": "80x200",
+      "price_cents": 48660,
+      "reference_cents": 81100,
+      "currency": "EUR",
+      "source": "https://bultex.fr/matelas-energizing?variant=EB1600216020000",
+      "available": true
+    },
+    {
+      "observed_at": "2026-10-23T23:12:16.383559+00:00",
+      "product_id": "bultex-energizing",
+      "variant_id": "90x190",
+      "price_cents": 52200,
+      "reference_cents": 87000,
+      "currency": "EUR",
+      "source": "https://bultex.fr/matelas-energizing?variant=EB1600216020000",
+      "available": true
+    },
+    {
+      "observed_at": "2026-10-23T23:12:16.383559+00:00",
+      "product_id": "bultex-energizing",
+      "variant_id": "90x200",
+      "price_cents": 55020,
+      "reference_cents": 91700,
+      "currency": "EUR",
+      "source": "https://bultex.fr/matelas-energizing?variant=EB1600216020000",
+      "available": true
+    },
+    {
+      "observed_at": "2026-10-23T23:12:16.383559+00:00",
+      "product_id": "bultex-energizing",
+      "variant_id": "120x190",
+      "price_cents": 66120,
+      "reference_cents": 110200,
+      "currency": "EUR",
+      "source": "https://bultex.fr/matelas-energizing?variant=EB1600216020000",
+      "available": true
+    },
+    {
+      "observed_at": "2026-10-23T23:12:16.383559+00:00",
+      "product_id": "bultex-energizing",
+      "variant_id": "140x190",
+      "price_cents": 69900,
+      "reference_cents": 116500,
+      "currency": "EUR",
+      "source": "https://bultex.fr/matelas-energizing?variant=EB1600216020000",
+      "available": true
+    },
+    {
+      "observed_at": "2026-10-23T23:12:16.383559+00:00",
+      "product_id": "bultex-energizing",
+      "variant_id": "140x200",
+      "price_cents": 73020,
+      "reference_cents": 121700,
+      "currency": "EUR",
+      "source": "https://bultex.fr/matelas-energizing?variant=EB1600216020000",
+      "available": true
+    },
+    {
+      "observed_at": "2026-10-23T23:12:16.383559+00:00",
+      "product_id": "bultex-energizing",
+      "variant_id": "160x200",
+      "price_cents": 83520,
+      "reference_cents": 139200,
+      "currency": "EUR",
+      "source": "https://bultex.fr/matelas-energizing?variant=EB1600216020000",
+      "available": true
+    },
+    {
+      "observed_at": "2026-10-23T23:12:16.383559+00:00",
+      "product_id": "bultex-energizing",
+      "variant_id": "180x200",
+      "price_cents": 100140,
+      "reference_cents": 166900,
+      "currency": "EUR",
+      "source": "https://bultex.fr/matelas-energizing?variant=EB1600216020000",
+      "available": true
+    },
+    {
+      "observed_at": "2026-10-23T23:12:16.383559+00:00",
+      "product_id": "bultex-energizing",
+      "variant_id": "200x200",
+      "price_cents": 115560,
+      "reference_cents": 192600,
+      "currency": "EUR",
+      "source": "https://bultex.fr/matelas-energizing?variant=EB1600216020000",
+      "available": true
     }
   ]
 }
