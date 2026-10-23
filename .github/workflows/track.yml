@@ -1,0 +1,52 @@
+name: Collecter les prix (sans IA)
+on:
+  schedule:
+    - cron: '15 7,8,19,20 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: tracking-data
+  cancel-in-progress: false
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install playwright==1.55.0
+      - run: python -m playwright install --with-deps chromium
+      - name: Fenêtre horaire Europe/Paris
+        id: due
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            HOUR=$(TZ=Europe/Paris date +%H)
+            if [ "$HOUR" != "09" ] && [ "$HOUR" != "21" ]; then
+              echo "run=false" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+          fi
+          echo "run=true" >> "$GITHUB_OUTPUT"
+      - name: Relevé
+        if: steps.due.outputs.run == 'true'
+        id: scrape
+        run: |
+          python tracker/collect.py || echo "failed=true" >> "$GITHUB_OUTPUT"
+      - name: Publier données observées ou erreurs
+        if: steps.due.outputs.run == 'true'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/history.json data/status.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'data: relevé automatique de prix'
+            git pull --rebase origin main
+            git push origin main
+          fi
+      - name: Échec explicite
+        if: steps.scrape.outputs.failed == 'true'
+        run: exit 1
