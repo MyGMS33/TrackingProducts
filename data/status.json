@@ -1,4 +1,10 @@
 {
-  "last_run": null,
-  "sources": {}
+  "last_run": "2026-10-23T23:11:05.090316+00:00",
+  "sources": {
+    "bultex-energizing": {
+      "status": "ok",
+      "checked_at": "2026-10-23T23:11:05.090316+00:00",
+      "variants": 10
+    }
+  }
 }
