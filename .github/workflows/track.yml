@@ -56,3 +56,25 @@ jobs:
       - name: Échec explicite
         if: steps.scrape.outputs.failed == 'true'
         run: exit 1
+
+  publish:
+    name: Actualiser le site après la collecte
+    needs: collect
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: .
+      - id: deployment
+        uses: actions/deploy-pages@v4
