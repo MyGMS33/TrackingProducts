@@ -49,16 +49,16 @@ def bultex(url):
 def parse_tractive_price(text):
     """Parse uniquement le prix du traceur (jamais les abonnements)."""
     pattern = (
-        r"Prix\\s+du\\s+produit\\s*"
-        r"(?P<current>\\d[\\d\\s.,]*)\\s*€\\s*"
-        r"Prix\\s+initial\\s*"
-        r"(?P<reference>\\d[\\d\\s.,]*)\\s*€"
+        r"Prix\s+du\s+produit\s*"
+        r"(?P<current>\d[\d\s.,]*)\s*€\s*"
+        r"Prix\s+initial\s*"
+        r"(?P<reference>\d[\d\s.,]*)\s*€"
     )
     match = re.search(pattern, text, flags=re.IGNORECASE)
     if not match:
         raise ValueError("Bloc tarifaire Tractive introuvable ou devise différente de EUR")
     def number(s):
-        return Decimal(re.sub(r"[\\s\\u00a0\\u202f]", "", s).replace(",", "."))
+        return Decimal(re.sub(r"[\s\u00a0\u202f]", "", s).replace(",", "."))
     current = number(match.group("current"))
     reference = number(match.group("reference"))
     if not (Decimal("5") <= current <= Decimal("999") and current <= reference <= Decimal("1999")):
@@ -84,7 +84,7 @@ def tractive(url, variant):
             response = page.goto(url, wait_until="domcontentloaded", timeout=55000)
             if response is None or response.status >= 400:
                 raise RuntimeError(f"Tractive HTTP {response.status if response else 'inconnu'}")
-            page.wait_for_load_state("networkidle", timeout=20000)
+            page.wait_for_function("""() => /Prix du produit/i.test(document.querySelector("main")?.textContent || "")""", timeout=30000)
             texts = page.locator("main p").all_text_contents()
             texts.append(page.locator("main").text_content(timeout=10000) or "")
             failure = None
@@ -93,7 +93,7 @@ def tractive(url, variant):
                     val, ref = parse_tractive_price(t)
                     return {
                         "variant_id": variant, "price": float(val),
-                        "reference_price": float(ref), "available": True, "url": url,
+                        "reference_price": float(ref), "available": None, "url": url,
                     }
                 except ValueError as exc:
                     failure = exc
