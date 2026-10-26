@@ -14,7 +14,7 @@ permissions:
   contents: write
 concurrency:
   group: tracking-data
-  cancel-in-progress: false
+  cancel-in-progress: true
 jobs:
   collect:
     runs-on: ubuntu-24.04
