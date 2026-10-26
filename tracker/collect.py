@@ -102,6 +102,72 @@ def tractive(url, variant):
             browser.close()
 
 
+
+def parse_soundboks_shopify(data, expected_product_id, variant_ids):
+    """Price the exact new SOUNDBOKS 4 Shopify product from EUR cent values."""
+    if not isinstance(data, dict) or data.get("id") != expected_product_id:
+        raise ValueError("Wrong SOUNDBOKS 4 Shopify product ID")
+    if data.get("handle") != "soundboks-4":
+        raise ValueError("Wrong SOUNDBOKS product handle")
+    if "soundboks 4" not in str(data.get("title", "")).casefold():
+        raise ValueError("Unexpected SOUNDBOKS product title")
+    raw_variants = data.get("variants")
+    if not isinstance(raw_variants, list):
+        raise ValueError("No Shopify variants")
+    found = []
+    for label, expected_id in variant_ids.items():
+        matches = [v for v in raw_variants if isinstance(v, dict) and v.get("id") == expected_id]
+        if len(matches) != 1:
+            raise ValueError("Missing or duplicated SOUNDBOKS variant " + label)
+        v = matches[0]
+        if v.get("option1") != label:
+            raise ValueError("Shopify variant label changed for " + label)
+        cents = v.get("price")
+        compare_cents = v.get("compare_at_price")
+        if isinstance(cents, bool) or not isinstance(cents, int) or not 20000 <= cents <= 200000:
+            raise ValueError("Invalid SOUNDBOKS selling price for " + label)
+        if compare_cents is not None:
+            if (isinstance(compare_cents, bool) or not isinstance(compare_cents, int)
+                    or compare_cents < cents or compare_cents > 250000):
+                raise ValueError("Incoherent SOUNDBOKS comparison price for " + label)
+        available = v.get("available")
+        if not isinstance(available, bool):
+            raise ValueError("Unknown SOUNDBOKS stock for " + label)
+        found.append({
+            "variant_id": label, "price": cents / 100,
+            "reference_price": compare_cents / 100 if compare_cents is not None else None,
+            "available": available
+        })
+    return found
+
+
+def soundboks_shopify(product):
+    """Single official Shopify JSON request obtains both grille colors."""
+    from urllib.request import Request, urlopen
+    from urllib.parse import urlsplit
+    url = product["url"]
+    parsed = urlsplit(url)
+    if (parsed.scheme != "https" or parsed.netloc != "soundboks.eu" or
+            parsed.path != "/fr/products/soundboks-4" or parsed.query):
+        raise ValueError("Unsupported SOUNDBOKS product URL")
+    json_url = url + ".js"
+    request = Request(json_url, headers={
+        "Accept": "application/json",
+        "User-Agent": "TrackingProducts personal price tracker (+https://github.com/MyGMS33/TrackingProducts)"
+    })
+    with urlopen(request, timeout=40) as response:
+        if response.status != 200:
+            raise RuntimeError(f"SOUNDBOKS Shopify HTTP {response.status}")
+        raw = response.read(1000000)
+        if len(raw) >= 1000000:
+            raise ValueError("SOUNDBOKS Shopify JSON response too large")
+    data = json.loads(raw)
+    variants = parse_soundboks_shopify(data, product["product_id"], product["variant_ids"])
+    for variant in variants:
+        variant["url"] = url
+    return variants
+
+
 def collect():
     products=json.loads(CATALOG.read_text(encoding="utf-8"))["products"]
     hist=json.loads(HISTORY.read_text(encoding="utf-8"))
@@ -122,6 +188,8 @@ def collect():
                 if set(urls) != set(product["expected_variants"]):
                     raise ValueError("Variantes et URLs Tractive incohérentes")
                 result = [tractive(urls[name], name) for name in product["expected_variants"]]
+            elif product["adapter"] == "soundboks_shopify":
+                result = soundboks_shopify(product)
             else:
                 raise ValueError("Adaptateur non pris en charge : "+product["adapter"])
             expected=set(product["expected_variants"])
@@ -131,10 +199,15 @@ def collect():
             rows=[]
             for row in result:
                 val=row["price"]; ref=row["reference_price"]
-                if not isinstance(val,(int,float)) or not (0 < val < 100000) or not isinstance(ref,(int,float)) or not (0 < ref < 100000):
+                if not isinstance(val,(int,float)) or not (0 < val < 100000):
                     raise ValueError(f"Prix absents ou invalides pour {row['variant_id']}")
+                if ref is None:
+                    if product["adapter"] != "soundboks_shopify":
+                        raise ValueError(f"Prix de référence manquant pour {row['variant_id']}")
+                elif not isinstance(ref,(int,float)) or not (val <= ref < 100000):
+                    raise ValueError(f"Prix barré incohérent pour {row['variant_id']}")
                 rows.append({"observed_at":stamp,"product_id":pid,"variant_id":row["variant_id"],
-                    "price_cents":round(val*100),"reference_cents":round(ref*100),
+                    "price_cents":round(val*100),"reference_cents":round(ref*100) if ref is not None else None,
                     "currency":product.get("currency","EUR"),"source":row.get("url", product["url"]),"available":row["available"]})
             hist["observations"].extend(rows)
             changed=True

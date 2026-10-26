@@ -70,6 +70,29 @@
         "Orange": "https://tractive.com/fr/pd/gps-tracker-dog?edition=xl-adventure-orange&shopCountry=FR"
       },
       "price_scope": "traceur seul, hors abonnement"
+    },
+    {
+      "id": "soundboks-4",
+      "group_id": "soundboks-4",
+      "name": "SOUNDBOKS 4",
+      "brand": "SOUNDBOKS",
+      "seller": "soundboks.eu",
+      "category": "Enceinte Bluetooth",
+      "currency": "EUR",
+      "url": "https://soundboks.eu/fr/products/soundboks-4",
+      "adapter": "soundboks_shopify",
+      "enabled": true,
+      "expected_variants": [
+        "Noir",
+        "Gris Métallique"
+      ],
+      "preferred_variant": "Noir",
+      "price_scope": "Enceinte neuve complète, hors accessoires et reconditionné",
+      "product_id": 8660358791493,
+      "variant_ids": {
+        "Noir": 47078090506565,
+        "Gris Métallique": 47078090670405
+      }
     }
   ]
 }
