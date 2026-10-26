@@ -19,7 +19,7 @@ def save_json(path, data):
 def bultex(url):
     from playwright.sync_api import sync_playwright
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True, args=["--no-sandbox"])
+        browser = p.chromium.launch(headless=True, args=["--no-sandbox"], **({"channel": os.environ["TRACKING_CHROME_CHANNEL"]} if os.getenv("TRACKING_CHROME_CHANNEL") else {}))
         try:
             page = browser.new_page(locale="fr-FR", timezone_id="Europe/Paris")
             response = page.goto(url, wait_until="domcontentloaded", timeout=55000)
@@ -78,7 +78,7 @@ def tractive(url, variant):
     ):
         raise ValueError("URL Tractive non reconnue: pays France et édition obligatoire")
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True, args=["--no-sandbox"])
+        browser = p.chromium.launch(headless=True, args=["--no-sandbox"], **({"channel": os.environ["TRACKING_CHROME_CHANNEL"]} if os.getenv("TRACKING_CHROME_CHANNEL") else {}))
         try:
             page = browser.new_page(locale="fr-FR", timezone_id="Europe/Paris")
             response = page.goto(url, wait_until="domcontentloaded", timeout=55000)
