@@ -11,7 +11,7 @@ let products=[], history=[], chosen='', variant='', days=30, sourceStatus={};
 const $=id=>document.getElementById(id), eu=n=>Number.isFinite(n)?new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR'}).format(n):'—', date=s=>s?new Date(s).toLocaleString('fr-FR'):'—';
 const observations=(id,v)=>history.filter(r=>r.product_id===id&&(!v||r.variant_id===v)).sort((a,b)=>String(a.observed_at).localeCompare(String(b.observed_at)));
 const latest=(id,v)=>observations(id,v).at(-1);
-const price=r=>r?Number(r.price_cents)/100:null; const ref=r&&r.reference_cents!=null?Number(r.reference_cents)/100:null;
+const price=r=>r?Number(r.price_cents)/100:null; const ref=r=>r&&r.reference_cents!=null?Number(r.reference_cents)/100:null;
 function selectProduct(){chosen=$('product').value;const p=products.find(p=>p.id===chosen);const variants=[...new Set([...p.expected_variants||[],...observations(chosen).map(r=>r.variant_id)])];$('variant').innerHTML=variants.map(v=>'<option value="'+esc(v)+'">'+esc(v)+'</option>').join('');variant=variants.includes(p.preferred_variant)?p.preferred_variant:(variants[0]||'');$('variant').value=variant;render()}
 function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function redraw(){const all=observations(chosen,variant);const cut=days==='all'?0:Date.now()-days*864e5;const arr=all.filter(r=>new Date(r.observed_at).getTime()>=cut);const svg=$('chart');if(!arr.length){svg.innerHTML='<text x="350" y="145" text-anchor="middle">Aucun relevé réel sur cette période</text><text x="350" y="170" text-anchor="middle">Les relevés apparaîtront après exécution du collecteur</text>';return}
