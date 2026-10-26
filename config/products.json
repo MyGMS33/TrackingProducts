@@ -28,6 +28,48 @@
       "alert_thresholds": {
         "160x200": 800
       }
+    },
+    {
+      "id": "tractive-dog-6-xl",
+      "group_id": "tractive-dog-6-xl",
+      "name": "Tractive DOG 6 XL",
+      "brand": "Tractive",
+      "seller": "Tractive.com",
+      "category": "GPS animaux",
+      "currency": "EUR",
+      "url": "https://tractive.com/fr/pd/gps-tracker-dog?edition=xl-black&shopCountry=FR",
+      "adapter": "tractive_dog6",
+      "enabled": true,
+      "expected_variants": [
+        "Noir",
+        "Marron"
+      ],
+      "preferred_variant": "Noir",
+      "variant_urls": {
+        "Noir": "https://tractive.com/fr/pd/gps-tracker-dog?edition=xl-black&shopCountry=FR",
+        "Marron": "https://tractive.com/fr/pd/gps-tracker-dog?edition=xl-brown&shopCountry=FR"
+      },
+      "price_scope": "traceur seul, hors abonnement"
+    },
+    {
+      "id": "tractive-dog-6-xl-adventure",
+      "group_id": "tractive-dog-6-xl",
+      "name": "Tractive DOG 6 XL Adventure",
+      "brand": "Tractive",
+      "seller": "Tractive.com",
+      "category": "GPS animaux",
+      "currency": "EUR",
+      "url": "https://tractive.com/fr/pd/gps-tracker-dog?edition=xl-adventure-orange&shopCountry=FR",
+      "adapter": "tractive_dog6",
+      "enabled": true,
+      "expected_variants": [
+        "Orange"
+      ],
+      "preferred_variant": "Orange",
+      "variant_urls": {
+        "Orange": "https://tractive.com/fr/pd/gps-tracker-dog?edition=xl-adventure-orange&shopCountry=FR"
+      },
+      "price_scope": "traceur seul, hors abonnement"
     }
   ]
 }
