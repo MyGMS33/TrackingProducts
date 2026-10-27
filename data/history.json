@@ -580,6 +580,156 @@
       "currency": "EUR",
       "source": "https://soundboks.eu/fr/products/soundboks-4",
       "available": true
+    },
+    {
+      "observed_at": "2026-10-27T14:33:55.958455+00:00",
+      "product_id": "bultex-energizing",
+      "variant_id": "80x190",
+      "price_cents": 48660,
+      "reference_cents": 81100,
+      "currency": "EUR",
+      "source": "https://bultex.fr/matelas-energizing?variant=EB1600216020000",
+      "available": true
+    },
+    {
+      "observed_at": "2026-10-27T14:33:55.958455+00:00",
+      "product_id": "bultex-energizing",
+      "variant_id": "80x200",
+      "price_cents": 48660,
+      "reference_cents": 81100,
+      "currency": "EUR",
+      "source": "https://bultex.fr/matelas-energizing?variant=EB1600216020000",
+      "available": true
+    },
+    {
+      "observed_at": "2026-10-27T14:33:55.958455+00:00",
+      "product_id": "bultex-energizing",
+      "variant_id": "90x190",
+      "price_cents": 52200,
+      "reference_cents": 87000,
+      "currency": "EUR",
+      "source": "https://bultex.fr/matelas-energizing?variant=EB1600216020000",
+      "available": true
+    },
+    {
+      "observed_at": "2026-10-27T14:33:55.958455+00:00",
+      "product_id": "bultex-energizing",
+      "variant_id": "90x200",
+      "price_cents": 55020,
+      "reference_cents": 91700,
+      "currency": "EUR",
+      "source": "https://bultex.fr/matelas-energizing?variant=EB1600216020000",
+      "available": true
+    },
+    {
+      "observed_at": "2026-10-27T14:33:55.958455+00:00",
+      "product_id": "bultex-energizing",
+      "variant_id": "120x190",
+      "price_cents": 66120,
+      "reference_cents": 110200,
+      "currency": "EUR",
+      "source": "https://bultex.fr/matelas-energizing?variant=EB1600216020000",
+      "available": true
+    },
+    {
+      "observed_at": "2026-10-27T14:33:55.958455+00:00",
+      "product_id": "bultex-energizing",
+      "variant_id": "140x190",
+      "price_cents": 69900,
+      "reference_cents": 116500,
+      "currency": "EUR",
+      "source": "https://bultex.fr/matelas-energizing?variant=EB1600216020000",
+      "available": true
+    },
+    {
+      "observed_at": "2026-10-27T14:33:55.958455+00:00",
+      "product_id": "bultex-energizing",
+      "variant_id": "140x200",
+      "price_cents": 73020,
+      "reference_cents": 121700,
+      "currency": "EUR",
+      "source": "https://bultex.fr/matelas-energizing?variant=EB1600216020000",
+      "available": true
+    },
+    {
+      "observed_at": "2026-10-27T14:33:55.958455+00:00",
+      "product_id": "bultex-energizing",
+      "variant_id": "160x200",
+      "price_cents": 83520,
+      "reference_cents": 139200,
+      "currency": "EUR",
+      "source": "https://bultex.fr/matelas-energizing?variant=EB1600216020000",
+      "available": true
+    },
+    {
+      "observed_at": "2026-10-27T14:33:55.958455+00:00",
+      "product_id": "bultex-energizing",
+      "variant_id": "180x200",
+      "price_cents": 100140,
+      "reference_cents": 166900,
+      "currency": "EUR",
+      "source": "https://bultex.fr/matelas-energizing?variant=EB1600216020000",
+      "available": true
+    },
+    {
+      "observed_at": "2026-10-27T14:33:55.958455+00:00",
+      "product_id": "bultex-energizing",
+      "variant_id": "200x200",
+      "price_cents": 115560,
+      "reference_cents": 192600,
+      "currency": "EUR",
+      "source": "https://bultex.fr/matelas-energizing?variant=EB1600216020000",
+      "available": true
+    },
+    {
+      "observed_at": "2026-10-27T14:33:55.958455+00:00",
+      "product_id": "tractive-dog-6-xl",
+      "variant_id": "Noir",
+      "price_cents": 7900,
+      "reference_cents": 7900,
+      "currency": "EUR",
+      "source": "https://tractive.com/fr/pd/gps-tracker-dog?edition=xl-black&shopCountry=FR",
+      "available": null
+    },
+    {
+      "observed_at": "2026-10-27T14:33:55.958455+00:00",
+      "product_id": "tractive-dog-6-xl",
+      "variant_id": "Marron",
+      "price_cents": 7900,
+      "reference_cents": 7900,
+      "currency": "EUR",
+      "source": "https://tractive.com/fr/pd/gps-tracker-dog?edition=xl-brown&shopCountry=FR",
+      "available": null
+    },
+    {
+      "observed_at": "2026-10-27T14:33:55.958455+00:00",
+      "product_id": "tractive-dog-6-xl-adventure",
+      "variant_id": "Orange",
+      "price_cents": 9900,
+      "reference_cents": 9900,
+      "currency": "EUR",
+      "source": "https://tractive.com/fr/pd/gps-tracker-dog?edition=xl-adventure-orange&shopCountry=FR",
+      "available": null
+    },
+    {
+      "observed_at": "2026-10-27T14:33:55.958455+00:00",
+      "product_id": "soundboks-4",
+      "variant_id": "Noir",
+      "price_cents": 99900,
+      "reference_cents": null,
+      "currency": "EUR",
+      "source": "https://soundboks.eu/fr/products/soundboks-4",
+      "available": true
+    },
+    {
+      "observed_at": "2026-10-27T14:33:55.958455+00:00",
+      "product_id": "soundboks-4",
+      "variant_id": "Gris Métallique",
+      "price_cents": 99900,
+      "reference_cents": null,
+      "currency": "EUR",
+      "source": "https://soundboks.eu/fr/products/soundboks-4",
+      "available": true
     }
   ]
 }
