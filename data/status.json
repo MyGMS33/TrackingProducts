@@ -1,24 +1,24 @@
 {
-  "last_run": "2026-10-28T15:07:34.128312+00:00",
+  "last_run": "2026-10-29T00:00:38.547459+00:00",
   "sources": {
     "bultex-energizing": {
       "status": "ok",
-      "checked_at": "2026-10-28T15:07:34.128312+00:00",
+      "checked_at": "2026-10-29T00:00:38.547459+00:00",
       "variants": 10
     },
     "tractive-dog-6-xl": {
       "status": "ok",
-      "checked_at": "2026-10-28T15:07:34.128312+00:00",
+      "checked_at": "2026-10-29T00:00:38.547459+00:00",
       "variants": 2
     },
     "tractive-dog-6-xl-adventure": {
       "status": "ok",
-      "checked_at": "2026-10-28T15:07:34.128312+00:00",
+      "checked_at": "2026-10-29T00:00:38.547459+00:00",
       "variants": 1
     },
     "soundboks-4": {
       "status": "ok",
-      "checked_at": "2026-10-28T15:07:34.128312+00:00",
+      "checked_at": "2026-10-29T00:00:38.547459+00:00",
       "variants": 2
     }
   }
